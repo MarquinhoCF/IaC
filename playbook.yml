@@ -15,11 +15,11 @@
           - djangorestframework
     - name: Iniciando projeto
       shell: '. /home/ubuntu/venv/bin/activate; django-admin startproject setup /home/ubuntu/'
+      ignore_errors: true
+      
     - name: Alterando a configuração de hosts
       lineinfile: 
         path: /home/ubuntu/setup/settings.py
         regexp: 'ALLOWED_HOSTS'
         line: 'ALLOWED_HOSTS = ["*"]'
         backrefs: yes
-    - name: Rodando o servidor
-      shell: '. /home/ubuntu/venv/bin/activate; python /home/ubuntu/manage.py runserver 0.0.0.0:8000'
